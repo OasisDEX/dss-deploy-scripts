@@ -3,6 +3,17 @@
 A set of scripts that deploy [dss](http://github.com/makerdao/dss) to an
 Ethereum chain of your choosing.
 
+## Price authorization usage
+
+1. Follow the rest of this document to do the DSS deployment
+  - skip `--pure` flag since it causes trouble
+  - supported networks are: `testchain` and `kovan`
+1. Run
+```
+sh authorize-price.sh account [...]
+```
+This will grant permissions for the specified accounts.
+
 ## Description
 
 This repo is composed of two steps:

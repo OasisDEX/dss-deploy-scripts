@@ -121,7 +121,7 @@ if [[ "$newGovToken" == true ]]; then
     seth send "$MCD_GOV" 'setAuthority(address)' "$GOV_GUARD"
 
     # Allow Flop to mint Gov token
-    seth send "$GOV_GUARD" 'rely(address)' "$MCD_FLOP" 
+    seth send "$GOV_GUARD" 'rely(address)' "$MCD_FLOP"
 fi
 
 # Deploy Collaterals (no solc optimization)
@@ -148,6 +148,7 @@ for token in $tokens; do
     done
 done
 
+if false; then
 # Deploy Proxy Actions (solc optimized)
 PROXY_ACTIONS=$(dappCreate dss-proxy-actions-optimized DssProxyActions)
 PROXY_ACTIONS_END=$(dappCreate dss-proxy-actions-optimized DssProxyActionsEnd)
@@ -159,6 +160,7 @@ CDP_MANAGER=$(dappCreate dss-proxy-actions DssCdpManager "$MCD_VAT")
 log "manager deployed"
 GET_CDPS=$(dappCreate dss-proxy-actions GetCdps)
 log "getCdps deployed"
+fi
 
 SAI_TUB=$(jq -r ".migration.tub | values" "$CONFIG_FILE")
 ethAdapterAddr="$(eval echo "\$$(jq -r ".migration.ethAdapterVarName | values" "$CONFIG_FILE")")"
