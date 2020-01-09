@@ -2,19 +2,19 @@
 
 set -euo pipefail
 
-if [[ "$IN_NIX_SHELL" != "yes" ]]; then
+if [[ "${IN_NIX_SHELL:-}" != "yes" ]]; then
     echo "This command must be run via nix-shell"
     exit 1
 fi
-# if [[ -z "$BIN_DIR" ]]; then
-#     echo "This command must be called without \"./\""
-#     exit 1
-# fi
+if [[ -z "${DAPP_LIB:-}" ]]; then
+    echo "This command must be called without \"./\""
+    exit 1
+fi
 
 CONTRACTS=out/addresses.json
 
 if [[ $# -eq 0 ]]; then
-  echo "Usage: $0 account [...]"
+  echo "Usage: $(basename $0) account [...]"
   exit 1
 fi
 accounts=$@

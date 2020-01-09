@@ -43,7 +43,7 @@ let
         solcFlags = "--metadata";
       })
   ) deps);
-  
+
   dss-proxy-actions-optimized = package (deps.dss-proxy-actions // {
     inherit doCheck;
     name = "dss-proxy-actions-optimized";
@@ -55,6 +55,7 @@ in makerScriptPackage {
 
   # Specify files to add to build environment
   src = lib.sourceByRegex ./. [
+    "authorize-price.sh"
     "deploy-.*"
     ".*\.json"
     ".*scripts.*"

@@ -6,8 +6,8 @@ Ethereum chain of your choosing.
 ## Price authorization usage
 
 1. Follow the rest of this document to do the DSS deployment
-  - skip `--pure` flag since it causes trouble
-  - supported networks are: `testchain` and `kovan`
+    - skip `--pure` flag since it causes trouble
+    - supported networks are: `testchain` and `kovan`
 1. Run
 ```
 sh authorize-price.sh account [...]
